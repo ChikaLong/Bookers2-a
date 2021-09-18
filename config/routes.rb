@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as: 'followers'
   end
 
-  resources :rooms, only:[:create,:show]
+  resources :rooms,only:[:create,:show]
   resources :messages,only:[:create]
 
   get '/search' => 'searches#search'

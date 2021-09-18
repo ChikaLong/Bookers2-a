@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="col-xs-6 col-xs-offset-3 text-center">
+
+    <h1><%= @another_entry.user.name %>さんとのチャット</h1>
+
+    <div class="chats">
+      <div class="chat">
+        <% if @messages.present? %>
+          <% @messages.each do |m| %>
+            <div class="chat-hukidashi">
+              <%= m.body %>
+            </div>
+          <%end%>
+        <%end%>
+      </div>
+    </div>
+
+    <%= form_with model: @messages, url: messages_path, local: true do |f| %>
+      <%= f.text_field :body %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+    <%end%>
+
+  </div>
+</div>
