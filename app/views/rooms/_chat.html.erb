@@ -1,0 +1,29 @@
+<div class="container-field">
+  <div class="col-md-6">
+
+    <div class="chats">
+      <div class="chat">
+        <% if @messages.present? %>
+          <% @messages.each do |m| %>
+            <div class="chat-hukidashi">
+              <% if m.user.id == current_user.id %>
+                <div class="text-right">
+                  <%= m.body %>
+                </div>
+              <%else%>
+                <div class="text-left">
+                  <%= m.body %>
+                </div>
+              <%end%>
+            </div>
+          <%end%>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= form_with model: @messages, url: messages_path do |f| %>
+  <%= f.text_field :body %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+<%end%>
