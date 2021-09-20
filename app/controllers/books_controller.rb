@@ -26,6 +26,7 @@ class BooksController < ApplicationController
     @newbook=Book.new
     @user=@book.user
     @book_comment=BookComment.new
+    impressionist(@book, nil, unique: [:ip_address])
   end
 
   def edit
